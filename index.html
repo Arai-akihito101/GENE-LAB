@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#19392f">
+<meta name="description" content="集団遺伝学と進化のしくみを12の実験で視覚的に学べるインタラクティブシミュレーター。">
+<title>GENE LAB 1.0 — 進化・集団遺伝学シミュレーター</title>
+<style>
+:root{--bg:#f4f5f1;--paper:#fff;--ink:#20372d;--muted:#63766b;--line:#dfe6dd;--deep:#19392f;--accent:#176950;--soft:#eef5ef;--blue:#39869c;--lilac:#a287b1;--sand:#cb995b;--red:#b66d5a}
+*{box-sizing:border-box}html{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,system-ui,sans-serif}body{margin:0;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.65}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}button:disabled{opacity:.46;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #7cbfa4;outline-offset:2px}[hidden]{display:none!important}
+.layout{display:grid;grid-template-columns:253px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--deep);padding:28px 14px;color:#d6e6d9;min-height:100vh}.logo{font-size:24px;letter-spacing:-.055em;font-weight:800;color:white;margin:0 7px}.logo-dot{display:inline-block;width:14px;height:14px;border:3px solid #a6d3bd;border-radius:50%;margin-right:8px}.slogan{font-size:10px;letter-spacing:.14em;color:#a8c6b4;margin:0 0 26px 30px}.nav-section{padding:14px 12px 7px;font-size:10px;letter-spacing:.09em;color:#91ae9e}.nav-btn{display:flex;align-items:center;gap:9px;width:100%;text-align:left;min-height:39px;padding:9px 10px;background:transparent;border:0;color:#cfdfd4;border-radius:4px;font-size:12px}.nav-btn small{color:#9db9a7;min-width:21px}.nav-btn.active{background:#315646;color:white;font-weight:700}.nav-btn:hover{background:#2e4c3f}.side-foot{border-top:1px solid #426253;padding:15px 8px;margin-top:26px;color:#a5c2ae;font-size:11px}.workspace{min-width:0}.top{min-height:63px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:10px 30px;gap:10px}.crumb{font-size:12px;color:#6c8175}.version{font-size:11px;color:#3a745b;background:#eff6ef;border:1px solid #d4e9d9;padding:4px 9px;white-space:nowrap}.mobile-nav{display:none}.main{max-width:1490px;margin:auto;padding:26px 30px 65px}.lead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;gap:16px}.eyebrow{font-size:10px;letter-spacing:.16em;color:var(--accent);font-weight:800}.lead h1{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;margin:6px 0 7px;line-height:1.3}.lead p{font-size:13px;color:var(--muted);max-width:750px;margin:0}.index{font-size:51px;color:#b5c4b7;font-weight:300;line-height:1}.columns{display:grid;grid-template-columns:minmax(0,1fr) 305px;align-items:start;gap:16px}.maincol,.sidecol{display:flex;flex-direction:column;gap:16px;min-width:0}.panel{background:var(--paper);border:1px solid var(--line);min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}.panel-head h2{font-size:14px;margin:0}.micro{font-size:10px;color:#849589;letter-spacing:.06em}.pad{padding:19px 21px}.view{padding:19px 20px 12px}.view-title{font-weight:750}.caption{color:#788b7d;font-size:11px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#617568;margin-top:8px}.legend b{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle;margin-right:4px}.population{display:grid;gap:9px;margin-top:12px}.population.two{grid-template-columns:1fr 1fr}.pop-box{border:1px solid #e3ebe3;background:#f8faf7;min-width:0}.pop-meta{padding:8px 11px 0;display:flex;justify-content:space-between;color:#617667;font-size:11px;font-weight:700}.pop-meta span:last-child{color:#87988a;font-weight:400}.dots{width:100%;height:220px;display:block}.status{font-size:11px;color:#72877b;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}.event-note{padding:11px 12px;font-size:12px;color:#73552e;background:#fff6e8;border-left:3px solid #c18b4d;margin-top:12px}.actions{padding:12px 15px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.actionset{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.btn{border:1px solid #cbdad0;background:white;border-radius:4px;padding:9px 12px;color:#2e4e3b;font-weight:650;font-size:12px;min-height:43px}.btn:hover:not(:disabled){background:#edf5ee}.btn.primary{background:var(--accent);color:white;border-color:var(--accent);min-width:86px}.btn.primary:hover:not(:disabled){background:#0b543d}.btn.event{color:#91602e;background:#fff9ee;border-color:#dfc7aa}.speed{height:43px;border:1px solid #d0ddd3;border-radius:4px;background:white;padding:0 5px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}.stat{padding:11px 14px;border-right:1px solid var(--line);min-width:0}.stat:last-child{border:0}.stat small{font-size:10px;color:#667e70;display:block}.stat strong{font-size:22px;line-height:1.35;letter-spacing:-.04em;font-variant-numeric:tabular-nums;word-break:break-word}.chartbox{padding:17px 20px}.tabs{display:flex;gap:3px;background:#f0f4f0;padding:3px}.tab{background:transparent;border:0;padding:7px 8px;min-height:34px;color:#6e8476;font-size:11px;border-radius:3px}.tab.active{background:white;color:var(--accent);box-shadow:0 1px 3px #d7ded8;font-weight:700}.chart{height:225px;width:100%;display:block;margin-top:8px}.chart-legend{font-size:11px;color:#677c6e;margin:2px 0 0}.swatch{display:inline-block;width:20px;height:3px;margin:0 5px 3px 7px;vertical-align:middle}.markerbar{display:flex;overflow:hidden;height:16px;background:#e8eee8;margin:11px 0 5px}.markerbar i{height:100%;display:block}.field{margin-top:18px}.field label{display:flex;align-items:baseline;justify-content:space-between;font-size:12px;font-weight:650;gap:6px}.field output{font-variant-numeric:tabular-nums;color:#214936;font-size:14px;font-weight:750}.field input{width:100%;accent-color:var(--accent);min-height:28px;cursor:pointer}.field .extent{font-size:10px;color:#8d9e92;display:flex;justify-content:space-between}.field .help{font-size:10px;color:#85968a}.divider{height:1px;background:var(--line);margin:19px 0}.tip{border-left:3px solid #78a990;padding-left:11px;font-size:12px;color:#597262}.tip b{display:block;color:#355e49}.stack{display:grid;gap:8px;margin-top:17px}.stack .btn{text-align:left;width:100%}.theory{font-size:12px;line-height:1.85;color:#526b5b}.theory p{margin:0 0 8px}.formula{font-family:Georgia,'Times New Roman',serif;background:#f2f6f2;text-align:center;color:#255741;font-size:18px;padding:11px 5px;margin:11px 0}.limit{font-size:11px;color:#778a7d;margin-top:13px;padding-top:12px;border-top:1px solid var(--line);line-height:1.8}.genotable{width:100%;border-collapse:collapse;font-size:12px}.genotable th,.genotable td{border-bottom:1px solid #ebefeb;text-align:right;padding:7px 3px;font-variant-numeric:tabular-nums}.genotable th:first-child,.genotable td:first-child{text-align:left}.genotable th{color:#748878;font-size:11px;font-weight:500}.small{font-size:11px;color:#76897a}.events{padding:17px 20px}.event-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px}.event-table th,.event-table td{padding:7px 6px;border-bottom:1px solid #edf1ed;text-align:right;font-variant-numeric:tabular-nums}.event-table th:first-child,.event-table td:first-child{text-align:left}.event-table th{color:#6c7e72;font-weight:600}.result{padding:17px 20px}.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:14px}.result-cell{border-left:2px solid #75a48c;background:#f5f8f3;padding:11px}.result-cell strong{font-size:21px;display:block;font-variant-numeric:tabular-nums}.result-cell span{color:#617c6b;font-size:10px}.footer{font-size:11px;color:#748677;margin-top:19px}.error{margin:15px;border:2px solid #b44;background:#fff5f5;padding:12px;color:#922}.muted{color:#798b7d}.inline-label{font-size:11px;color:#6b7e73}.summary-note{font-size:11px;color:#7c8b80;margin-top:10px}.noscript{padding:16px;color:#922;background:#fff1ef}
+.references{margin-top:12px;font-size:11px;color:#7c8d80}.references summary{display:inline-block;cursor:pointer;text-decoration:underline;text-decoration-color:#c5d0c7;text-underline-offset:3px}.reference-body{margin-top:9px;padding:11px 14px;background:#f0f3ef;border:1px solid #e0e7df;max-width:680px}.reference-body ul{margin:7px 0;padding-left:19px}.reference-body a{color:#386f5b}.reference-body li{margin:5px 0}
+@media(max-width:1180px){.layout{grid-template-columns:210px minmax(0,1fr)}.sidebar{padding:20px 8px}.columns{grid-template-columns:minmax(0,1fr) 270px;gap:11px}.main{padding:20px 16px}.pad{padding:16px}.stat{padding:10px}.stat strong{font-size:19px}}
+@media(max-width:960px){.layout{display:block}.sidebar{display:none}.mobile-nav{display:flex;gap:6px;padding:9px 12px;overflow-x:auto;background:var(--deep);scrollbar-width:none;-webkit-overflow-scrolling:touch}.mobile-nav::-webkit-scrollbar{display:none}.mobile-nav .nav-btn{width:auto;flex:0 0 auto;min-height:43px;padding:10px 13px;white-space:nowrap}.top{min-height:53px;padding:8px 16px}.main{padding:19px 13px 48px}.columns{grid-template-columns:1fr}.sidecol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sidecol .settings{grid-column:1}.sidecol .explanation{grid-column:2;grid-row:1}.sidecol .genopanel{grid-column:1 / -1}}
+@media(max-width:610px){body{font-size:13px}.top{font-size:11px}.main{padding:16px 10px 50px}.lead{margin-bottom:15px}.lead h1{font-size:24px}.index{font-size:37px}.view{padding:13px 12px 11px}.population.two{grid-template-columns:1fr}.population.two .dots{height:160px}.dots{height:208px}.actions{padding:10px}.actionset{width:100%}.actionset .btn{flex:1}.actionset:last-child{justify-content:space-between}.btn{min-height:44px}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.stat strong{font-size:20px}.chartbox{padding:14px 12px}.chartbox .panel-head{align-items:start}.tabs{width:100%;justify-content:space-around}.sidecol{display:flex;flex-direction:column;gap:12px}.result-grid{grid-template-columns:1fr}.result-cell{display:flex;align-items:center;gap:12px}.result-cell strong{min-width:80px}.event-table{font-size:10px}.event-table th,.event-table td{padding:6px 3px}.pad{padding:16px}.logo{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="error" id="error" hidden role="alert"></div><noscript><div class="noscript">JavaScriptを有効にしてSafariまたはChromeから開いてください。</div></noscript>
+<div class="layout">
+<aside class="sidebar" aria-label="実験テーマ"><div class="logo"><span class="logo-dot"></span>GENE LAB</div><div class="slogan">EVOLUTION, EXPLORED.</div><div id="desktop-nav"></div><div class="side-foot">VERSION 1.0<br>進化と遺伝のしくみを、動かして学ぶ<br>シミュレーションはブラウザ上で実行</div></aside>
+<div class="workspace"><header class="top"><div class="crumb">GENE LAB / <b id="breadcrumb">ハーディ・ワインベルグ平衡</b></div><span class="version">RELEASE 1.0</span></header><nav class="mobile-nav" id="mobile-nav" aria-label="実験テーマ"></nav>
+<main class="main"><section class="lead"><div><div id="eyebrow" class="eyebrow"></div><h1 id="topic-title"></h1><p id="topic-description"></p></div><div class="index" id="topic-index"></div></section>
+<div class="columns"><div class="maincol">
+<section class="panel"><div class="view"><div class="panel-head"><div><div class="view-title" id="view-title">集団の観察</div><div class="caption" id="view-subtitle">色は遺伝子型を示します</div></div><span class="micro" id="mode-label">MODEL</span></div><div class="legend" id="legend"></div>
+<div class="population" id="population"><div class="pop-box"><div class="pop-meta"><span id="popname1">集団 A</span><span id="popsize1"></span></div><canvas class="dots" id="population1" role="img" aria-label="集団Aの遺伝子型または形質"></canvas></div><div class="pop-box" id="population-box2" hidden><div class="pop-meta"><span id="popname2">集団 B</span><span id="popsize2"></span></div><canvas class="dots" id="population2" role="img" aria-label="集団Bの遺伝子型または形質"></canvas></div></div><div class="status"><span id="model-status"></span><span>世代 <b id="generation">0</b></span></div><div id="notice" class="event-note" role="status" aria-live="polite" hidden></div></div>
+<div class="actions"><div class="actionset"><button type="button" class="btn primary" id="play">▶ 再生</button><button type="button" class="btn" id="step">＋ 1世代</button><button type="button" class="btn" id="reset">↺ 初期化</button></div><div class="actionset"><label class="inline-label" for="speed">速度</label><select class="speed" id="speed" aria-label="再生速度"><option value="1">1×</option><option value="5">5×</option><option value="15">15×</option><option value="40">40×</option></select><button type="button" class="btn event" id="event" hidden></button></div></div>
+<div class="stats"><div class="stat"><small id="statlabel1"></small><strong id="stat1"></strong></div><div class="stat"><small id="statlabel2"></small><strong id="stat2"></strong></div><div class="stat"><small id="statlabel3"></small><strong id="stat3"></strong></div><div class="stat"><small id="statlabel4"></small><strong id="stat4"></strong></div></div></section>
+<section class="panel chartbox"><div class="panel-head"><h2>世代ごとの変化</h2><div class="tabs" role="group" aria-label="グラフの種類"><button type="button" class="tab active" data-plot="allele">遺伝子頻度</button><button type="button" class="tab" data-plot="diversity">多様性 / 形質</button><button type="button" class="tab" data-plot="population">個体数</button></div></div><canvas id="chart" class="chart" role="img" aria-label="実験の時系列グラフ"></canvas><div class="chart-legend" id="chart-note"></div></section>
+<section class="panel pad" id="markers-panel"><div class="panel-head"><h2>中立マーカー（L1）の構成</h2><span class="micro">4 LOCI / 5 ALLELES</span></div><div id="markerbar" class="markerbar" aria-label="L1の遺伝子頻度"></div><div class="small" id="marker-caption"></div></section>
+<section class="panel events" id="event-panel" hidden><div class="panel-head"><h2>災害の履歴</h2><span class="micro" id="event-count">0 EVENTS</span></div><div class="small">回復後に何度でも災害を起こせます。種類数と多様度の変化を確認しましょう。</div><table class="event-table"><thead><tr><th>回</th><th>世代</th><th>個体数</th><th>マーカー種類</th><th>平均H</th></tr></thead><tbody id="event-rows"></tbody></table></section>
+<section class="panel result" id="results" hidden><div class="panel-head"><h2 id="result-title">反復実験の結果</h2><span class="micro" id="result-n"></span></div><div class="result-grid"><div class="result-cell"><strong id="result1"></strong><span id="result-label1"></span></div><div class="result-cell"><strong id="result2"></strong><span id="result-label2"></span></div><div class="result-cell"><strong id="result3"></strong><span id="result-label3"></span></div></div><p class="small" id="result-detail"></p><button type="button" class="btn" id="close-results">結果を閉じる</button></section>
+</div><div class="sidecol">
+<section class="panel pad settings"><div class="panel-head"><h2>実験条件</h2><span class="micro">PARAMETERS</span></div><div id="fields"></div><div class="divider"></div><div class="tip"><b>試してみよう</b><span id="experiment-hint"></span></div><div class="stack"><button type="button" class="btn" id="repeat">100回の反復実験</button><button type="button" class="btn" id="csv">結果をCSV保存</button></div><div class="summary-note" id="settings-note">初期値を変更すると実験が最初から始まります。</div></section>
+<section class="panel pad explanation"><div class="panel-head"><h2>理論と解説</h2><span class="micro">THEORY</span></div><div class="theory" id="theory"></div><div class="limit" id="limitations"></div></section>
+<section class="panel pad genopanel" id="genotype-panel"><div class="panel-head"><h2>遺伝子型：実測と平衡期待値</h2><span class="micro">GENOTYPES</span></div><table class="genotable"><thead><tr><th>遺伝子型</th><th>実測</th><th>期待</th></tr></thead><tbody><tr><td>AA</td><td id="g-AA"></td><td id="exp-AA"></td></tr><tr><td>Aa</td><td id="g-Aa"></td><td id="exp-Aa"></td></tr><tr><td>aa</td><td id="g-aa"></td><td id="exp-aa"></td></tr></tbody></table><div class="small">期待値は現在の p に対する p²、2pq、q²。近親交配や選択のある集団は平衡の前提を満たしません。</div></section>
+</div></div><p class="footer">このアプリは教育用の確率モデルです。実際の生物の全遺伝情報・環境・行動は再現していません。世代は離散的、集団は有限で、原則として二倍体です。色の違いが常に生存能力の違いを表すわけではありません。</p>
+<details class="references"><summary>学習の参考資料</summary><div class="reference-body">進化・集団遺伝学をさらに学びたい方へ。外部サイト（英語）を開きます。<ul><li><a href="https://evolution.berkeley.edu/evolution-101/" target="_blank" rel="noopener noreferrer">Understanding Evolution — University of California, Berkeley</a>（進化の基礎）</li><li><a href="https://openstax.org/details/books/biology-2e" target="_blank" rel="noopener noreferrer">Biology 2e — OpenStax</a>（大学初年次向け生物学教科書）</li></ul>※本アプリは上記機関による監修・認定を受けたものではありません。</div></details>
+</main></div></div>
+<script>
+'use strict';
+(()=>{
+const $=id=>document.getElementById(id);
+const TWO=['founder','flow','speciation'];
+const C={AA:'#39869c',Aa:'#a287b1',aa:'#cb995b'}, markerCols=['#3e8d88','#9184b4','#d0a16a','#cb7667','#99ae70'];
+const INFO=[
+ ['hw','ハーディ・ワインベルグ平衡','平衡の理論値 p² : 2pq : q² と有限集団での実測を比較する。','初期の A 頻度を変えて、ヘテロ接合体が最も多くなる条件を調べよう。','ランダム交配 / 適応度差なし','<p>A の頻度を p、a を q = 1 − p とおきます。無作為交配では次世代の期待遺伝子型頻度が決まります。</p><div class="formula">AA = p² · Aa = 2pq · aa = q²</div><p>理想条件では対立遺伝子頻度は維持されます。有限集団では遺伝的浮動で少しずつ変動します。</p>','二倍体・無作為交配・離散世代。変異、移住、選択なし。有限個体による標本誤差あり。'],
+ ['drift','遺伝的浮動','対立遺伝子が適応度と無関係に偶然で増減し、固定・消失する。','N=20とN=500を比べ、50世代後の頻度変化を観察しよう。','ライト・フィッシャーモデル / 中立','<p>次世代の遺伝子コピー数は、二項分布による無作為抽出とみなせます。</p><div class="formula">Var(Δp | p) = pq / 2N</div><p>小集団ほど大きく変動します。p=0は消失、p=1は固定です。</p>','実効集団サイズ Ne と表示個体数 N を等しいと仮定した理想化モデル。'],
+ ['bottle','ボトルネック効果','個体数が激減したあと回復しても、遺伝的多様性に影響が残る。','災害を起こして集団が回復するまで進め、再び災害を起こそう。何度でも繰り返せます。','無作為生存 / 災害後に集団回復','<p>無作為な災害で少数の個体が生き残ると、対立遺伝子が偶然失われます。個体数の回復自体は、失われた対立遺伝子を復活させません。</p><div class="formula">H = 1 − Σ fᵢ²</div><p>中立マーカー4座位の平均期待ヘテロ接合度Hと、残存種類数を災害履歴で比較します。</p>','災害は遺伝子型と無関係な無作為生存。成長率は簡略化、突然変異・移住はなし。回復条件は個体数が設定Nに戻ること。'],
+ ['neutral','中立進化','新たな中立変異が消えるか固定されるかを実験する。','新しい突然変異Aを1コピーから追跡し、複数回試そう。','新規中立変異 / 適応度差なし','<p>中立変異は有利でなくても偶然で固定され得ます。二倍体の中立な新規変異が1コピーなら、固定確率は次のとおりです。</p><div class="formula">P(固定) = 1 / 2N</div><p>大部分の新規変異は消失します。多数の独立試行で確かめましょう。</p>','新規変異は最初に1コピー。以後は突然変異・自然選択を追加しない。固定は希少なので100回の試行で0回も普通です。'],
+ ['founder','創始者効果','少数の創始個体が新集団をつくることで、遺伝子頻度が偏る。','「新集団をつくる」を押し、元集団と新集団の遺伝子頻度を比べよう。','無作為抽出 / 独立した2集団','<p>少数個体が新しい地域に移動して集団をつくると、元集団との遺伝子頻度差が生じることがあります。</p><div class="formula">p(創始) ≠ p(元集団)</div><p>その後、創始集団は設定した上限まで増殖し、遺伝的浮動も受けます。</p>','創始個体は元集団から無作為抽出。地域環境や自然選択は無視。'],
+ ['flow','遺伝子流動','2集団で移住による配偶子の交流が起こり、遺伝子構成が近づく。','移住率を0%と25%で比べ、集団間のA頻度差を確認しよう。','対称的な遺伝子流動 / 2集団','<p>2集団の間で一定割合の配偶子を他集団由来とすると、交流によって頻度差が小さくなりやすくなります。</p><div class="formula">p′₁ = (1−m)p₁ + mp₂</div><p>ただし、小集団では遺伝的浮動も働きます。</p>','両方向に同率で移住した配偶子が繁殖に参加する近似。個体の実際の移動数とは異なる。'],
+ ['selection','自然選択','AA・Aa・aaの適応度に差を設け、対立遺伝子頻度の変化を調べる。','Aに有利な選択を強め、優性度hを変えよう。','遺伝子型による繁殖寄与度の差','<p>各遺伝子型の繁殖寄与度を wAA=1、wAa=1−hs、waa=1−s とします。Aが有利なとき、選択でその頻度が増える傾向があります。</p><div class="formula">w̄ = p²wAA + 2pqwAa + q²waa</div><p>有限集団なので偶然も重なります。</p>','適応度は配偶子を供給する親の抽出確率で近似。環境依存・頻度依存・年齢構成は扱わない。'],
+ ['mutation','突然変異','Aとaが相互に変わることによる頻度変化を調べる。','突然変異率を高くして、A頻度が0.5に近づくか観察しよう。','配偶子生成時の対称突然変異','<p>A→aとa→Aが同じ確率 μ で起きるとき、選択がなければ平均的には p=0.5へ近づきます。</p><div class="formula">E[p′] = p + μ(1−2p)</div><p>実際の1世代の値は有限集団の偶然によって変動します。</p>','可視化のため実際より非常に大きい突然変異率を選べます。生物の一般的な1塩基あたり変異率とは異なります。'],
+ ['recomb','遺伝的組換え','同じ染色体上の2座位の組み合わせが組換えにより変わる。','組換え率を0%と50%で比較し、ABとabだけの状態からAbとaBが生じるか観察しよう。','2連鎖座位 / 相互の組換え','<p>ABとabの2種類のハプロタイプが多い集団では、減数分裂時の組換えでAbとaBが生じます。</p><div class="formula">D′ = (1 − r)D</div><p>ここでDは連鎖不平衡で、式は理想的な大集団における組換えの効果を表します。</p>','2座位・一交差モデル。突然変異なし。有限集団では浮動があるためDの推移は式と厳密には一致しません。'],
+ ['patterns','選択の3パターン','方向性・安定化・分断選択による量的形質分布の変化を観察する。','選択タイプを変えて、形質の平均と分散がどう変化するか見よう。','4遺伝子座の加算形質 / 環境差','<p>量的形質への選択は、平均が動く方向性選択、中間値が残る安定化選択、両極端が有利な分断選択などに区分できます。</p><div class="formula">z = Σ 対立遺伝子の寄与 + e</div><p>形質値zと適応度w(z)を用いて、繁殖親を重み付き抽出します。</p>','4座位の加算効果と出生時の環境ノイズのみ。遺伝子相互作用、頻度依存、表現型可塑性は簡略化。'],
+ ['inbreed','近親交配','同一個体由来の配偶子同士が結合するとヘテロ接合体が減る。','自殖率を高くして、Aaの割合の変化を調べよう。','自殖混合モデル（植物など）','<p>一定確率で同一親から2配偶子を取り、残りは無作為交配します。自殖が増えると同じ対立遺伝子の組合せが増えます。</p><div class="formula">F ≈ 1 − Hobs / Hexp</div><p>理想的な大集団では自殖率σに対し平衡近交係数は F=σ/(2−σ) に近づきます。</p>','自殖は近親交配の一形態。動物一般の近縁個体交配を直接表現してはいません。'],
+ ['speciation','種分化の過程','2集団の異なる環境と地理的隔離が、遺伝的分化を生む様子を調べる。','地理的交流を減らし、逆方向の自然選択を強めると分化が大きくなるか見よう。','2環境の局所適応 / 分化指標','<p>集団1ではA、集団2ではaが有利と仮定します。自然選択と遺伝子流動のバランスにより遺伝子頻度が分化します。</p><div class="formula">分化 = |p₁ − p₂|</div><p>遺伝的な分化は種分化の一過程ですが、それだけで生殖隔離が成立したとはいえません。</p>','この実装は「種分化への分化過程」を可視化するもので、生殖隔離や新種の成立自体は判定しません。']
+];
+const DEFAULTS={size:200,allele:60,survival:10,founder:10,migration:10,selection:40,dominance:50,mutation:5,recomb:20,pattern:'directional',strength:65,selfing:50};
+const FIELD={
+ size:{name:'集団サイズ N',min:20,max:500,step:10,unit:'個体'},allele:{name:'初期のA頻度',min:5,max:95,step:5,unit:'%'},survival:{name:'災害時の生存率',min:5,max:50,step:5,unit:'%'},founder:{name:'創始個体数',min:2,max:50,step:1,unit:'個体'},migration:{name:'移住由来配偶子の割合 m',min:0,max:50,step:1,unit:'%'},selection:{name:'選択係数 s',min:0,max:90,step:5,unit:'%'},dominance:{name:'劣性側の優性度 h',min:0,max:100,step:10,unit:''},mutation:{name:'対称突然変異率 μ',min:0,max:20,step:0.5,unit:'%'},recomb:{name:'組換え率 r',min:0,max:50,step:5,unit:'%'},strength:{name:'選択の強さ',min:0,max:100,step:5,unit:'%'},selfing:{name:'自殖率 σ',min:0,max:100,step:5,unit:'%'}
+};
+const SHOW={hw:['size','allele'],drift:['size','allele'],bottle:['size','allele','survival'],neutral:['size'],founder:['size','allele','founder'],flow:['size','migration'],selection:['size','allele','selection','dominance'],mutation:['size','allele','mutation'],recomb:['size','recomb'],patterns:['size','strength','pattern'],inbreed:['size','allele','selfing'],speciation:['size','migration','selection']};
+let params={...DEFAULTS},topic='hw',pop1=[],pop2=[],gen=0,history=[],events=[],playing=false,timer=null,plot='allele',busy=false,noticeText='',timerToken=0;
+const info=Object.fromEntries(INFO.map(x=>[x[0],x]));
+const random=()=>Math.random(),choose=a=>a[Math.floor(random()*a.length)];
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function weightedMark(){const x=random();return x<.5?0:x<.75?1:x<.9?2:x<.98?3:4;}
+function createPerson(p=.6){return {g:[+(random()<p),+(random()<p)],m:Array.from({length:4},()=>[weightedMark(),weightedMark()]),hap:null,poly:null,environment:0};}
+function initPerson(){const x=createPerson(topic==='neutral'?0:topic==='flow'?.85:topic==='speciation'?.5:params.allele/100);
+ if(topic==='recomb'){x.hap=[random()<.5?[1,1]:[0,0],random()<.5?[1,1]:[0,0]];x.g=[x.hap[0][0],x.hap[1][0]];}
+ if(topic==='patterns'){x.poly=[Array.from({length:4},()=>+(random()<.5)),Array.from({length:4},()=>+(random()<.5))];x.environment=(random()+random()+random()-1.5)*.55;}
+ return x;}
+function clonePerson(x){return {g:x.g.slice(),m:x.m.map(p=>p.slice()),hap:x.hap?x.hap.map(p=>p.slice()):null,poly:x.poly?x.poly.map(p=>p.slice()):null,environment:x.environment};}
+function phenotype(x){return (x.poly?x.poly[0].reduce((a,b)=>a+b,0)+x.poly[1].reduce((a,b)=>a+b,0):x.g[0]+x.g[1]*2)+(x.environment||0);}
+function fitness(ind, mode, deme){if(mode==='selection'||mode==='speciation'){
+ const k=ind.g[0]+ind.g[1],s=params.selection/100,h=params.dominance/100;
+ if(mode==='speciation')return deme===0?(k===2?1:k===1?1-.5*s:1-s):(k===0?1:k===1?1-.5*s:1-s);
+ return k===2?1:k===1?1-h*s:1-s;}
+ if(mode==='patterns'){const z=phenotype(ind),s=params.strength/100;
+ if(params.pattern==='directional')return Math.max(.02,1-s+s*Math.max(0,Math.min(1,z/8)));
+ if(params.pattern==='stabilizing'){const d=(z-4)/4;return Math.max(.02,Math.exp(-4*s*d*d));}
+ return Math.max(.02,(1-s)+s*Math.min(1,Math.pow((z-4)/4,2)));}
+ return 1;}
+function sampler(pop,mode,deme){if(!pop.length)return null;const cum=new Float64Array(pop.length);let sum=0;for(let i=0;i<pop.length;i++){sum+=Math.max(0,fitness(pop[i],mode,deme));cum[i]=sum;}return {pop,cum,sum};}
+function drawParent(s){if(!s||!s.pop.length)throw Error('親集団がありません');const k=random()*s.sum;let lo=0,hi=s.cum.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(k<s.cum[mid])hi=mid;else lo=mid+1;}return s.pop[lo];}
+function makeGamete(parent){const slot=random()<.5?0:1;const q={g:parent.g[slot],m:parent.m.map(p=>p[random()<.5?0:1]),hap:null,poly:null};
+ if(parent.hap){let a=slot,b=random()<params.recomb/100?1-slot:slot;q.hap=[parent.hap[a][0],parent.hap[b][1]];q.g=q.hap[0];}
+ if(parent.poly){q.poly=parent.poly[slot].map((v,l)=>random()<.5?parent.poly[slot][l]:parent.poly[1-slot][l]);}
+ if(topic==='mutation'){if(random()<params.mutation/100)q.g=1-q.g;}
+ return q;}
+function childFrom(g1,g2){return {g:[g1.g,g2.g],m:g1.m.map((v,i)=>[v,g2.m[i]]),hap:g1.hap?[g1.hap,g2.hap]:null,poly:g1.poly?[g1.poly,g2.poly]:null,environment:g1.poly?(random()+random()+random()-1.5)*.55:0};}
+function newGeneration(own,target,other=null,m=0,mode='hw',deme=0){if(!own.length)return [];
+ const s1=sampler(own,mode,deme),s2=other&&other.length?sampler(other,mode,1-deme):null;
+ const children=[];const useParent=()=>drawParent(s2&&random()<m?s2:s1);
+ for(let i=0;i<target;i++){
+  const mother=useParent(),father=topic==='inbreed'&&random()<params.selfing/100?mother:useParent();
+  children.push(childFrom(makeGamete(mother),makeGamete(father)));
+ }return children;
+}
+function metrics(pop){if(!pop.length)return null;const counts=Array.from({length:4},()=>[0,0,0,0,0]);let a=0,AA=0,Aa=0,aa=0,sz=0,sz2=0;const haps=[0,0,0,0];for(const x of pop){const k=x.g[0]+x.g[1];a+=k;if(k===2)AA++;else if(k===1)Aa++;else aa++;
+ for(let j=0;j<4;j++){counts[j][x.m[j][0]]++;counts[j][x.m[j][1]]++;}
+ if(x.hap){for(const hp of x.hap)haps[hp[0]*2+hp[1]]++;}
+ if(x.poly){const z=phenotype(x);sz+=z;sz2+=z*z;}}
+ const n=pop.length,p=a/(2*n),markerH=counts.reduce((sum,arr)=>sum+1-arr.reduce((v,x)=>v+Math.pow(x/(2*n),2),0),0)/4;
+ const q=haps.map(x=>x/(2*n));const D=q[3]-((q[2]+q[3])*(q[1]+q[3]));
+ return {n,p,AA,Aa,aa,h:2*p*(1-p),Hobs:Aa/n,markerH,richness:counts.reduce((sum,arr)=>sum+arr.filter(v=>v>0).length,0),counts,haps:q,D,traitMean:sz/n,traitVar:Math.max(0,sz2/n-(sz/n)**2)};}
+function nav(){const names=[['基礎理論',0],['集団の変化',3],['進化の要因',6],['発展テーマ',10]];
+ $('desktop-nav').innerHTML=INFO.map((x,i)=>`${names.find(e=>e[1]===i)?'<div class="nav-section">'+names.find(e=>e[1]===i)[0]+'</div>':''}<button type="button" class="nav-btn ${topic===x[0]?'active':''}" data-topic="${x[0]}"><small>${String(i+1).padStart(2,'0')}</small>${x[1]}</button>`).join('');
+ $('mobile-nav').innerHTML=INFO.map((x,i)=>`<button type="button" class="nav-btn ${topic===x[0]?'active':''}" data-topic="${x[0]}">${String(i+1).padStart(2,'0')} ${i===0?'H-W平衡':x[1]}</button>`).join('');
+ document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.topic)));
+}
+function fields(){const visible=SHOW[topic];$('fields').innerHTML=visible.map(id=>{
+ if(id==='pattern')return `<div class="field"><label for="param-pattern">選択タイプ</label><select class="speed" style="width:100%;margin-top:9px" id="param-pattern"><option value="directional">方向性選択</option><option value="stabilizing">安定化選択</option><option value="disruptive">分断選択</option></select></div>`;
+ const f=FIELD[id];return `<div class="field"><label for="param-${id}">${f.name}<output id="output-${id}"></output></label><input type="range" id="param-${id}" min="${f.min}" max="${f.max}" step="${f.step}" value="${params[id]}"><div class="extent"><span>${f.min}${f.unit}</span><span>${f.max}${f.unit}</span></div></div>`;}).join('');
+ for(const id of visible){const el=$('param-'+id);el.value=params[id];if(id!=='pattern'){
+ const update=()=>{$('output-'+id).textContent=(id==='dominance'?(params[id]/100).toFixed(1):params[id]+FIELD[id].unit)};update();
+ el.addEventListener('input',()=>{params[id]=+el.value;update();if(id==='survival'||id==='migration'||id==='selection'||id==='dominance'||id==='mutation'||id==='recomb'||id==='strength'||id==='selfing'){if(id==='survival')refresh();else refresh();}else setup();});
+ }else el.addEventListener('change',()=>{params.pattern=el.value;setup();});}
+ $('settings-note').textContent='初期頻度・集団サイズなどは変更時に初期化されます。災害生存率などの一部の条件は途中でも変更できます。';
+}
+function select(t){if(!info[t])return;pause();topic=t;const d=info[t],idx=INFO.findIndex(x=>x[0]===t)+1;
+ $('eyebrow').textContent='EXPERIMENT '+String(idx).padStart(2,'0')+' / EVOLUTION & GENETICS';$('topic-index').textContent=String(idx).padStart(2,'0');$('topic-title').textContent=d[1];$('topic-description').textContent=d[2];$('breadcrumb').textContent=d[1];$('experiment-hint').textContent=d[3];$('model-status').textContent=d[4];$('theory').innerHTML=d[5];$('limitations').textContent='モデルの前提・限界：'+d[6];
+ $('population-box2').hidden=!TWO.includes(t);$('population').classList.toggle('two',TWO.includes(t));$('event-panel').hidden=t!=='bottle';$('genotype-panel').hidden=['patterns','recomb','speciation'].includes(t);
+ $('markers-panel').hidden=['patterns','recomb'].includes(t);$('event').hidden=!['bottle','founder'].includes(t);
+ $('popname1').textContent=t==='founder'?'元集団':TWO.includes(t)?'集団 1':'集団';$('popname2').textContent=t==='founder'?'創始集団':'集団 2';
+ $('view-title').textContent=t==='patterns'?'形質をもつ個体':t==='recomb'?'2座位のハプロタイプ':'集団を構成する個体';$('view-subtitle').textContent=t==='patterns'?'色は連続形質の値（低〜高）':t==='recomb'?'色はハプロタイプ（第1染色体）のAB/Ab/aB/ab': '色は焦点遺伝子座の遺伝子型（AA・Aa・aa）';
+ $('legend').innerHTML=t==='patterns'?'<span><b style="background:#39869c"></b>低い形質値</span><span><b style="background:#a287b1"></b>中間</span><span><b style="background:#cb995b"></b>高い形質値</span>':t==='recomb'?['AB','Ab','aB','ab'].map((k,i)=>`<span><b style="background:${['#39869c','#a287b1','#cb995b','#b66d5a'][i]}"></b>${k}</span>`).join(''):['AA','Aa','aa'].map(k=>`<span><b style="background:${C[k]}"></b>${k}</span>`).join('');
+ $('repeat').textContent=t==='neutral'?'200回の新規変異実験':'100回の反復実験';plot='allele';document.querySelectorAll('[data-plot]').forEach(b=>b.classList.toggle('active',b.dataset.plot==='allele'));
+ nav();fields();setup();
+}
+function setup(){pause();gen=0;history=[];events=[];noticeText='';$('notice').hidden=true;$('results').hidden=true;
+ const n=params.size;pop1=Array.from({length:n},initPerson);
+ if(topic==='neutral'){pop1[0].g[0]=1;}
+ if(topic==='flow'){pop2=Array.from({length:n},()=>createPerson(.15));}
+ else if(topic==='speciation'){pop2=Array.from({length:n},()=>createPerson(.5));}
+ else pop2=[];
+ record();
+}
+function next(){if(gen>=50000){pause();return;}const n=params.size,t=topic;
+ if(t==='bottle'&&pop1.length<n){pop1=newGeneration(pop1,Math.min(n,Math.max(pop1.length+1,Math.ceil(pop1.length*1.5))),null,0,t);}
+ else if(t==='founder'&&pop2.length){const old1=pop1,old2=pop2;pop1=newGeneration(old1,n);pop2=newGeneration(old2,Math.min(n,Math.max(old2.length+1,Math.ceil(old2.length*1.5))));}
+ else if(t==='flow'||t==='speciation'){const a=pop1,b=pop2,m=params.migration/100;pop1=newGeneration(a,n,b,m,t,0);pop2=newGeneration(b,n,a,m,t,1);}
+ else {pop1=newGeneration(pop1,n,null,0,t);}
+ gen++;record();
+ if(t==='neutral'){const p=metrics(pop1).p;if(p===0||p===1){pause();notice('中立変異Aが'+(p===0?'消失':'固定')+'しました。初期化で新しい独立試行を開始できます。');}}
+}
+function disaster(){if(topic!=='bottle'||pop1.length<params.size)return;pause();const before=metrics(pop1);const survivors=Math.max(2,Math.round(before.n*params.survival/100));pop1=shuffle(pop1.slice()).slice(0,survivors);const after=metrics(pop1);const entry={index:events.length+1,gen,before,after};events.push(entry);record('災害 '+entry.index);notice(`第${entry.index}回の災害：${before.n} → ${after.n} 個体、マーカー種類 ${before.richness} → ${after.richness}。${params.size}個体に回復すると、次の災害を起こせます。`);}
+function found(){if(topic!=='founder'||pop2.length)return;pause();const source=metrics(pop1);pop2=shuffle(pop1.slice()).slice(0,Math.min(params.founder,pop1.length)).map(clonePerson);record('創始');notice(`創始集団 ${pop2.length}個体を形成。A頻度は元集団 ${source.p.toFixed(3)}、新集団 ${metrics(pop2).p.toFixed(3)}。`);}
+function notice(s){noticeText=s;$('notice').textContent=s;$('notice').hidden=!s;}
+function record(event=''){const a=metrics(pop1),b=metrics(pop2);history.push({gen,event,p1:a.p,p2:b?b.p:null,H1:a.markerH,H2:b?b.markerH:null,n1:a.n,n2:b?b.n:null,r1:a.richness,r2:b?b.richness:null,het:a.Hobs,exp:a.h,D:a.D,AB:a.haps[3],recomb:a.haps[1]+a.haps[2],mean:a.traitMean,var:a.traitVar,diff:b?Math.abs(a.p-b.p):null});
+ if(history.length>420)history.shift();refresh();}
+function pause(){playing=false;timerToken++;if(timer!==null){clearTimeout(timer);timer=null;}$('play').textContent='▶ 再生';}
+function tick(token){if(!playing||token!==timerToken)return;next();if(playing&&token===timerToken)timer=setTimeout(()=>tick(token),Math.max(20,670/Number($('speed').value)));}
+function toggle(){if(playing){pause();return;}if(topic==='founder'&&!pop2.length)return;playing=true;$('play').textContent='Ⅱ 停止';const token=++timerToken;tick(token);}
+function canvasContext(c){const r=c.getBoundingClientRect(),w=Math.max(1,r.width),h=Math.max(1,r.height),d=Math.min(window.devicePixelRatio||1,2);if(c.width!==Math.round(w*d)||c.height!==Math.round(h*d)){c.width=Math.round(w*d);c.height=Math.round(h*d);}const ctx=c.getContext('2d');ctx.setTransform(d,0,0,d,0,0);ctx.clearRect(0,0,w,h);return {ctx,w,h};}
+function colorOf(ind){if(topic==='patterns'){const z=Math.max(0,Math.min(8,phenotype(ind)));return z<2.8?C.AA:z<5.2?C.Aa:C.aa;}
+ if(topic==='recomb'){const hp=ind.hap[0];return ['#b66d5a','#a287b1','#cb995b','#39869c'][hp[0]*2+hp[1]];}
+ return ind.g[0]+ind.g[1]===2?C.AA:ind.g[0]+ind.g[1]===1?C.Aa:C.aa;}
+function drawPopulation(id,pop,capacity){const {ctx,w,h}=canvasContext($(id));const margin=10,innerW=w-2*margin,innerH=h-2*margin;const cols=Math.max(1,Math.ceil(Math.sqrt(capacity*innerW/innerH))),rows=Math.ceil(capacity/cols),dx=innerW/cols,dy=innerH/rows,r=Math.max(1.4,Math.min(6,Math.min(dx,dy)*.34));
+ for(let i=0;i<capacity;i++){const x=margin+(i%cols+.5)*dx,y=margin+(Math.floor(i/cols)+.5)*dy;if(y>h)continue;ctx.beginPath();ctx.fillStyle=i<pop.length?colorOf(pop[i]):'#e4eae3';ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
+ if(!pop.length){ctx.fillStyle='#798b80';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText('「新集団をつくる」で開始',w/2,h/2);}
+}
+function chartSeries(){const second=TWO.includes(topic)&&metrics(pop2);
+ if(plot==='population')return {max:params.size,series:[['n1','#39869c','集団1'],...(second?[['n2','#b66d5a','集団2']]:[])]};
+ if(plot==='allele'){
+  if(topic==='patterns')return {max:8,series:[['mean','#39869c','平均形質値']]};
+  if(topic==='recomb')return {max:1,series:[['AB','#39869c','AB頻度'],['recomb','#b66d5a','Ab + aB頻度']]};
+  return {max:1,series:[['p1','#39869c','集団1：A頻度'],...(second?[['p2','#b66d5a','集団2：A頻度']]:[])]};
+ }
+ if(topic==='patterns')return {max:6,series:[['var','#39869c','形質分散']]};
+ if(topic==='recomb')return {max:.3,series:[['D','#39869c','連鎖不平衡D']]};
+ if(topic==='inbreed'||topic==='hw')return {max:1,series:[['het','#39869c','実測ヘテロ接合度'],['exp','#b66d5a','H-W期待ヘテロ接合度']]};
+ return {max:1,series:[['H1','#39869c','集団1：中立マーカーH'],...(second?[['H2','#b66d5a','集団2：中立マーカーH']]:[])]};
+}
+function drawChart(){const {ctx,w,h}=canvasContext($('chart'));
+ if(!history.length)return;const spec=chartSeries(),l=41,r=14,t=16,b=31,iw=Math.max(5,w-l-r),ih=h-t-b,rows=history;
+ const X=i=>l+iw*(rows.length<2?0:i/(rows.length-1)),Y=v=>t+ih*(1-v/spec.max);
+ ctx.lineWidth=1;ctx.font='11px -apple-system,system-ui,sans-serif';ctx.textAlign='right';ctx.textBaseline='middle';
+ for(let k=0;k<=4;k++){const y=t+ih*k/4,val=spec.max*(1-k/4);ctx.strokeStyle='#e7eee7';ctx.beginPath();ctx.moveTo(l,y+.5);ctx.lineTo(w-r,y+.5);ctx.stroke();ctx.fillStyle='#86978a';ctx.fillText(spec.max===params.size?String(Math.round(val)):val.toFixed(spec.max<=.3?2:1),l-6,y);}
+ for(let i=0;i<rows.length;i++)if(rows[i].event){const x=X(i);ctx.strokeStyle='#c89a6a';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(x,t);ctx.lineTo(x,t+ih);ctx.stroke();ctx.setLineDash([]);}
+ for(const [key,color] of spec.series){ctx.beginPath();let started=false;for(let i=0;i<rows.length;i++){let v=rows[i][key];if(v===null||v===undefined){started=false;continue;}if(key==='D')v=Math.abs(v);let x=X(i),y=Y(v);if(!started){ctx.moveTo(x,y);started=true;}else ctx.lineTo(x,y);}ctx.strokeStyle=color;ctx.lineWidth=2.3;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();}
+ ctx.textBaseline='alphabetic';ctx.fillStyle='#77897c';ctx.font='11px sans-serif';ctx.textAlign='left';ctx.fillText('世代 '+rows[0].gen,l,h-5);ctx.textAlign='right';ctx.fillText('世代 '+rows[rows.length-1].gen,w-r,h-5);
+ $('chart-note').innerHTML=spec.series.map((x)=>`<span class="swatch" style="background:${x[1]}"></span>${x[2]}`).join('　')+(topic==='bottle'?'　│ 破線＝災害':'');
+}
+function statLabels(m,b){if(topic==='neutral')return [['個体数',m.n],['新規変異の頻度',m.p.toFixed(4)],['固定確率 (理論)',(100/(2*params.size)).toFixed(2)+'%'],['変異の状態',m.p===1?'固定':m.p===0?'消失':'分離中']];
+ if(topic==='flow'||topic==='speciation')return [['各集団の個体数',params.size],['集団1 A頻度',m.p.toFixed(3)],['集団2 A頻度',b.p.toFixed(3)],['集団間の頻度差',Math.abs(m.p-b.p).toFixed(3)]];
+ if(topic==='founder')return [['元集団の個体数',m.n],['元集団 A頻度',m.p.toFixed(3)],['新集団 A頻度',b?b.p.toFixed(3):'—'],['創始集団の個体数',b?b.n:'—']];
+ if(topic==='bottle')return [['現在の個体数',m.n],['災害実施回数',events.length],['マーカーの種類',m.richness+'/20'],['平均多様度 H',m.markerH.toFixed(3)]];
+ if(topic==='recomb')return [['AB頻度',m.haps[3].toFixed(3)],['Ab + aB頻度',(m.haps[1]+m.haps[2]).toFixed(3)],['連鎖不平衡 |D|',Math.abs(m.D).toFixed(3)],['組換え率 r',params.recomb+'%']];
+ if(topic==='patterns')return [['個体数',m.n],['平均形質値',m.traitMean.toFixed(2)],['形質の分散',m.traitVar.toFixed(2)],['選択パターン',{'directional':'方向性','stabilizing':'安定化','disruptive':'分断'}[params.pattern]]];
+ if(topic==='inbreed')return [['実測Aa頻度',m.Hobs.toFixed(3)],['平衡期待Aa',m.h.toFixed(3)],['近交係数の推定',m.h>.001?(1-m.Hobs/m.h).toFixed(3):'—'],['自殖率',params.selfing+'%']];
+ if(topic==='selection')return [['個体数',m.n],['A頻度',m.p.toFixed(3)],['選択係数 s',(params.selection/100).toFixed(2)],['Aa適応度',(1-params.selection/100*params.dominance/100).toFixed(2)]];
+ if(topic==='mutation')return [['個体数',m.n],['A頻度',m.p.toFixed(3)],['突然変異率 μ',params.mutation+'%'],['期待変化 Δp',(params.mutation/100*(1-2*m.p)).toFixed(3)]];
+ return [['個体数',m.n],['A頻度 p',m.p.toFixed(3)],['期待ヘテロ接合度',m.h.toFixed(3)],['マーカーの種類',m.richness+'/20']];}
+function refresh(){if(!pop1.length)return;
+ const m=metrics(pop1),b=metrics(pop2),n=params.size;
+ $('generation').textContent=gen.toLocaleString('ja-JP');$('popsize1').textContent='N = '+m.n;$('popsize2').textContent=b?'N = '+b.n:'開始前';
+ const label=statLabels(m,b);for(let i=1;i<=4;i++){$('statlabel'+i).textContent=label[i-1][0];$('stat'+i).textContent=label[i-1][1];}
+ const event=$('event');event.disabled=false;
+ if(topic==='bottle'){event.disabled=m.n<n;event.textContent=m.n<n?`回復待ち ${m.n}/${n}`:`⚡ 第${events.length+1}回の災害`;
+  $('event-count').textContent=events.length+' EVENTS';$('event-rows').innerHTML=events.map(e=>`<tr><td>第${e.index}回</td><td>${e.gen}</td><td>${e.before.n} → ${e.after.n}</td><td>${e.before.richness} → ${e.after.richness}</td><td>${e.before.markerH.toFixed(3)} → ${e.after.markerH.toFixed(3)}</td></tr>`).join('')||'<tr><td colspan="5" style="text-align:left;color:#7f8e84">まだ災害は発生していません。</td></tr>';
+ }else if(topic==='founder'){event.disabled=!!b;event.textContent=b?'新集団を作成済み':'＋ 新集団をつくる';}
+ $('play').disabled=topic==='founder'&&!b;$('step').disabled=topic==='founder'&&!b;
+ $('g-AA').textContent=(100*m.AA/m.n).toFixed(1)+'%';$('g-Aa').textContent=(100*m.Aa/m.n).toFixed(1)+'%';$('g-aa').textContent=(100*m.aa/m.n).toFixed(1)+'%';$('exp-AA').textContent=(100*m.p*m.p).toFixed(1)+'%';$('exp-Aa').textContent=(200*m.p*(1-m.p)).toFixed(1)+'%';$('exp-aa').textContent=(100*(1-m.p)**2).toFixed(1)+'%';
+ $('markerbar').replaceChildren();m.counts[0].forEach((x,i)=>{const el=document.createElement('i');el.style.background=markerCols[i];el.style.width=100*x/(2*m.n)+'%';el.title=`中立対立遺伝子${i+1}：${(100*x/(2*m.n)).toFixed(1)}%`;$('markerbar').append(el);});$('marker-caption').textContent=`4座位の残存対立遺伝子 ${m.richness} / 20、平均期待ヘテロ接合度 H = ${m.markerH.toFixed(3)}。`;
+ drawPopulation('population1',pop1,n);if(b)drawPopulation('population2',pop2,n);else if(TWO.includes(topic))drawPopulation('population2',[],n);
+ drawChart();
+}
+function binomial(n,p){p=Math.max(0,Math.min(1,p));let v=0;for(let i=0;i<n;i++)if(random()<p)v++;return v;}
+function simulateDrift(p,n,g){for(let j=0;j<g;j++){if(p===0||p===1)break;p=binomial(2*n,p)/(2*n);}return p;}
+function simpleSelect(p,s,h,deme=null){let fAA=p*p,fAa=2*p*(1-p),faa=(1-p)*(1-p);let wAA=1,wAa=1-h*s,waa=1-s;if(deme===1){wAA=1-s;wAa=1-.5*s;waa=1;}if(deme===0){wAA=1;wAa=1-.5*s;waa=1-s;}
+ return (fAA*wAA+.5*fAa*wAa)/(fAA*wAA+fAa*wAa+faa*waa);}
+function sampleSummary(title,a,b,c,detail,trials){$('results').hidden=false;$('result-title').textContent=title;$('result-n').textContent=trials+' TRIALS';for(let i=1;i<=3;i++){const pair=[a,b,c][i-1];$('result'+i).textContent=pair[0];$('result-label'+i).textContent=pair[1];}$('result-detail').textContent=detail;$('results').scrollIntoView({behavior:'smooth',block:'start'});}
+function repeat(){if(busy)return;pause();busy=true;const btn=$('repeat');btn.disabled=true;btn.textContent='反復実験を計算中…';setTimeout(()=>{try{runRepeat();}catch(e){onError(e);}finally{busy=false;btn.disabled=false;btn.textContent=topic==='neutral'?'200回の新規変異実験':'100回の反復実験';}},30);}
+function runRepeat(){const N=params.size,p0=params.allele/100,T=topic==='neutral'?200:100;let x=0,y=0,z=0;const fmt=a=>Number(a).toFixed(3);
+ if(topic==='hw'){
+  for(let j=0;j<T;j++){let a=0,het=0;for(let i=0;i<N;i++){const g=+(random()<p0) + (+(random()<p0));a+=g;het+=g===1;}x+=het/N;y+=(het/N-2*p0*(1-p0))**2;}
+  sampleSummary('100回：ランダム交配と理論値',[(100*x/T).toFixed(1)+'%','Aa実測頻度の平均'],[(200*p0*(1-p0)).toFixed(1)+'%','Aaの理論値'],fmt(Math.sqrt(y/T)),'各試行で独立に2N個の配偶子からN個体をつくり、観測しました。',T);
+ }else if(topic==='drift'){
+  const small=Math.max(10,Math.floor(N/5));for(let j=0;j<T;j++){const a=simulateDrift(p0,small,80),b=simulateDrift(p0,N,80);x+=Math.abs(a-p0);y+=Math.abs(b-p0);if(a===0||a===1)z++;}
+  sampleSummary('80世代後：小集団と大集団', [fmt(x/T),`小集団N=${small}の平均変化幅`],[fmt(y/T),`大集団N=${N}の平均変化幅`],[z+'/'+T,'小集団で固定・消失'],'各試行の初期A頻度は同じ。二項抽出による変化を比較しています。',T);
+ }else if(topic==='bottle'){
+  for(let j=0;j<T;j++){const source=Array.from({length:N},()=>createPerson(p0));const a=metrics(source);let surv=shuffle(source.slice()).slice(0,Math.max(2,Math.round(N*params.survival/100)));let steps=0;while(surv.length<N&&steps++<30)surv=newGeneration(surv,Math.min(N,Math.max(surv.length+1,Math.ceil(surv.length*1.5))));const b=metrics(surv);x+=a.richness;y+=b.richness;if(b.markerH<a.markerH)z++;}
+  sampleSummary('100回：災害と回復',[(x/T).toFixed(1),'災害前の種類数'],[(y/T).toFixed(1),'回復後の種類数'],[z+'/'+T,'平均Hが減った試行'],'独立した1回の災害を100回。画面での複数災害の履歴とは異なります。',T);
+ }else if(topic==='neutral'){
+  const maxGen=Math.min(6000,Math.max(500,10*N));for(let j=0;j<T;j++){let copies=1;for(let g=0;g<maxGen&&copies>0&&copies<2*N;g++)copies=binomial(2*N,copies/(2*N));if(copies===2*N)x++;else if(copies===0)y++;else z++;}
+  sampleSummary('200回：新規中立変異', [x+'/'+T,'固定した集団'],[y+'/'+T,'消失した集団'],[(100/(2*N)).toFixed(2)+'%','理論固定確率'],`最大${maxGen}世代で打ち切り（未決着${z}回）。理論固定確率が低いので200回では固定が0回でも矛盾しません。`,T);
+ }else if(topic==='founder'){
+  for(let j=0;j<T;j++){const src=Array.from({length:N},()=>createPerson(p0)),a=metrics(src),b=metrics(shuffle(src.slice()).slice(0,params.founder));x+=Math.abs(a.p-b.p);y+=b.richness;z+=a.richness;}
+  sampleSummary('100回：創始者集団', [fmt(x/T),'元集団との平均頻度差'],[(y/T).toFixed(1),'創始集団の平均種類数'],[(z/T).toFixed(1),'元集団の平均種類数'],'創始直後の比較。抽出以後の増殖はこの反復実験に含みません。',T);
+ }else if(topic==='flow'){
+  const m=params.migration/100;for(let j=0;j<T;j++){let a=.85,b=.15,c=.85,d=.15;for(let g=0;g<40;g++){const na=binomial(2*N,(1-m)*a+m*b)/(2*N),nb=binomial(2*N,(1-m)*b+m*a)/(2*N);a=na;b=nb;c=binomial(2*N,c)/(2*N);d=binomial(2*N,d)/(2*N);}x+=Math.abs(a-b);y+=Math.abs(c-d);}
+  sampleSummary('100回：40世代後の集団差', [fmt(x/T),'移住ありの平均差'],[fmt(y/T),'移住なしの平均差'],[params.migration+'%','移住由来配偶子割合'],'両集団の初期頻度を0.85と0.15に統一しています。',T);
+ }else if(topic==='selection'){
+  const s=params.selection/100,h=params.dominance/100;for(let j=0;j<T;j++){let p=p0;for(let g=0;g<50;g++)p=binomial(2*N,simpleSelect(p,s,h))/(2*N);x+=p;if(p===1)y++;if(p===0)z++;}
+  sampleSummary('100回：自然選択の50世代', [fmt(x/T),'最終A頻度の平均'],[y+'/'+T,'Aが固定した試行'],[z+'/'+T,'Aが消失した試行'],'遺伝子型適応度と二項抽出の近似を使用。',T);
+ }else if(topic==='mutation'){
+  const mu=params.mutation/100;for(let j=0;j<T;j++){let p=p0;for(let g=0;g<40;g++)p=binomial(2*N,p+mu*(1-2*p))/(2*N);x+=p;y+=(p-.5)**2;}
+  sampleSummary('100回：突然変異の40世代', [fmt(x/T),'最終A頻度の平均'],[fmt(Math.sqrt(y/T)),'0.5からのRMS距離'],[params.mutation+'%','各方向の変異率'],'A↔aの対称突然変異で、自然選択なし。',T);
+ }else if(topic==='recomb'){
+  const r=params.recomb/100;for(let j=0;j<T;j++){let fr=[.5,0,0,.5];for(let g=0;g<35;g++){
+   const pa=fr[2]+fr[3],pb=fr[1]+fr[3],D=fr[3]-pa*pb;
+   const q=[fr[0]-r*D,fr[1]+r*D,fr[2]+r*D,fr[3]-r*D],counts=[0,0,0,0];
+   for(let k=0;k<2*N;k++){let v=random(),acc=0;for(let h=0;h<4;h++){acc+=q[h];if(v<=acc||h===3){counts[h]++;break;}}}fr=counts.map(v=>v/(2*N));}
+   const pa=fr[2]+fr[3],pb=fr[1]+fr[3];x+=Math.abs(fr[3]-pa*pb);y+=fr[1]+fr[2];}
+  sampleSummary('100回：2座位の組換え', [fmt(x/T),'35世代後の平均|D|'],[fmt(y/T),'平均Ab+aB頻度'],[fmt(.25*Math.pow(1-r,35)),'大集団の理論|D|'],'初期状態をABとabが各50%になる理想条件から開始した近似実験。有限集団は浮動します。',T);
+ }else if(topic==='patterns'){
+  for(let j=0;j<T;j++){let pop=Array.from({length:Math.min(N,220)},initPerson);for(let g=0;g<25;g++)pop=newGeneration(pop,pop.length,null,0,'patterns');const d=metrics(pop);x+=d.traitMean;y+=d.traitVar;}
+  sampleSummary('100回：量的形質への選択',[(x/T).toFixed(2),'25世代後の平均形質'],[(y/T).toFixed(2),'25世代後の平均分散'],[params.strength+'%','選択の強さ'],'計算時間を抑えるため各試行の集団サイズは最大220個体。4座位加算モデルと環境誤差を使用。',T);
+ }else if(topic==='inbreed'){
+  for(let j=0;j<T;j++){let pop=Array.from({length:Math.min(N,220)},()=>createPerson(p0));for(let g=0;g<25;g++)pop=newGeneration(pop,pop.length,null,0,'inbreed');const d=metrics(pop);x+=d.Hobs;y+=d.h;}
+  sampleSummary('100回：25世代の自殖', [fmt(x/T),'実測Aa頻度'],[fmt(y/T),'H-W平衡での期待'],[fmt(params.selfing/100/(2-params.selfing/100)),'大集団の理論F'],'各試行の集団サイズは最大220個体です。自殖率から予測される近交係数の参考値を併記。',T);
+ }else if(topic==='speciation'){
+  const m=params.migration/100,s=params.selection/100;for(let j=0;j<T;j++){let a=.5,b=.5;for(let g=0;g<50;g++){const ma=(1-m)*a+m*b,mb=(1-m)*b+m*a;a=binomial(2*N,simpleSelect(ma,s,.5,0))/(2*N);b=binomial(2*N,simpleSelect(mb,s,.5,1))/(2*N);}x+=Math.abs(a-b);y+=a;z+=b;}
+  sampleSummary('100回：逆方向の選択', [fmt(x/T),'集団間の平均頻度差'],[fmt(y/T),'集団1の平均A頻度'],[fmt(z/T),'集団2の平均A頻度'],'遺伝的分化は種分化の必要条件とは限らず、この結果だけで生殖隔離の成立を意味しません。',T);
+ }
+}
+function exportCSV(){const headers=['世代','イベント','集団1A頻度','集団2A頻度','集団1マーカーH','集団2マーカーH','集団1個体数','集団2個体数','集団1マーカー種類数','集団2マーカー種類数','実測ヘテロ接合度','H-W期待','D','AB頻度','組換え型頻度','平均形質値','形質分散'];
+ const props=['gen','event','p1','p2','H1','H2','n1','n2','r1','r2','het','exp','D','AB','recomb','mean','var'];const lines=[headers,...history.map(row=>props.map(key=>{const x=row[key];return x==null?'':typeof x==='number'?Number(x.toFixed(6)):x;}))];
+ const text='\uFEFF'+lines.map(r=>r.map(value=>'"'+String(value).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob([text],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`gene-lab-v1.0_${topic}_${new Date().toISOString().slice(0,10)}.csv`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}
+function onError(e){console.error(e);$('error').hidden=false;$('error').textContent='実行エラー: '+(e&&e.message?e.message:String(e));pause();}
+window.addEventListener('error',e=>onError(e.error||e.message));
+function init(){document.querySelectorAll('[data-plot]').forEach(el=>el.addEventListener('click',()=>{plot=el.dataset.plot;document.querySelectorAll('[data-plot]').forEach(b=>b.classList.toggle('active',b===el));drawChart();}));
+ $('play').addEventListener('click',toggle);$('step').addEventListener('click',()=>{pause();if(topic==='founder'&&!pop2.length)return;next();});$('reset').addEventListener('click',setup);$('event').addEventListener('click',()=>topic==='bottle'?disaster():found());$('repeat').addEventListener('click',repeat);$('csv').addEventListener('click',exportCSV);$('close-results').addEventListener('click',()=>$('results').hidden=true);
+ let resizeTicket=0;window.addEventListener('resize',()=>{cancelAnimationFrame(resizeTicket);resizeTicket=requestAnimationFrame(refresh);});document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
+ select('hw');
+ window.GeneLabTest={get:()=>({topic,gen,n:params.size,n1:pop1.length,n2:pop2.length,events:events.map(e=>({index:e.index,gen:e.gen,nBefore:e.before.n,nAfter:e.after.n,richnessBefore:e.before.richness,richnessAfter:e.after.richness})),p1:metrics(pop1).p,p2:pop2.length?metrics(pop2).p:null,stats:metrics(pop1),history:history.map(x=>({...x}))}),metrics,step:next,disaster,setup,params};
+}
+try{init();}catch(e){onError(e);}
+})();
+</script>
+</body></html>
