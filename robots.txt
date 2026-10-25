@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gene-lab-8z6.pages.dev/sitemap.xml
