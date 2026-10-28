@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#19392f">
-<meta name="description" content="ハーディ・ワインベルグ平衡、遺伝的浮動、自然選択など12テーマを無料で体験。高校生向けのわかりやすい解説からシミュレーションへ進める進化と遺伝の学習サイト。">
+<meta name="description" content="ハーディ・ワインベルグの法則の5条件と計算、遺伝的浮動、自然選択、ボトルネック効果を高校生物向けに解説。花の色・比較グラフを動かして無料で学べる進化と遺伝の実験室。">
 <link rel="canonical" href="https://gene-lab-8z6.pages.dev/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:site_name" content="いでんのたね">
+<meta name="twitter:card" content="summary">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="GENE LAB｜高校生の進化・遺伝を動かして学ぶ">
+<meta property="og:title" content="いでんのたね｜高校生物の進化・遺伝を動かして理解">
 <meta property="og:description" content="疑問を調べて、実際に条件を変えながら生物の仕組みを理解する無料学習サイト。">
 <meta property="og:url" content="https://gene-lab-8z6.pages.dev/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GENE LAB","url":"https://gene-lab-8z6.pages.dev/","inLanguage":"ja","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"高校生向けの進化・遺伝・集団遺伝学の無料シミュレーター。12テーマを条件変更しながら学ぶ。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
-<title>GENE LAB｜高校生の進化・遺伝を動かして学ぶ無料シミュレーター</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://gene-lab-8z6.pages.dev/#website","url":"https://gene-lab-8z6.pages.dev/","name":"いでんのたね","alternateName":"いでんのたね｜高校生物の実験室","inLanguage":"ja"},{"@type":"WebApplication","name":"いでんのたね","url":"https://gene-lab-8z6.pages.dev/","inLanguage":"ja","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"高校生物の進化・遺伝の無料学習シミュレーター。花畑・遺伝的浮動・自然選択・ハーディ・ワインベルグ平衡を12テーマで実験。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}]}</script>
+<title>高校生物の進化・遺伝シミュレーター｜ハーディ・ワインベルグ・遺伝的浮動｜いでんのたね</title>
 <style>
 :root{--bg:#f4f5f1;--paper:#fff;--ink:#20372d;--muted:#63766b;--line:#dfe6dd;--deep:#19392f;--accent:#176950;--soft:#eef5ef;--blue:#39869c;--lilac:#a287b1;--sand:#cb995b;--red:#b66d5a}
 *{box-sizing:border-box}html{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,system-ui,sans-serif}body{margin:0;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.65}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}button:disabled{opacity:.46;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #7cbfa4;outline-offset:2px}[hidden]{display:none!important}
@@ -75,7 +78,7 @@
 @media(max-width:610px){.view .panel-head{align-items:flex-start}.view-switch{margin-top:5px}.view-switch .view-option{padding:7px 9px}.chromosomes{gap:6px}.chromosome-item{padding:8px}.flower-detail{font-size:11px}}
 
 [hidden]{display:none!important}
-/* Ver.1.3 — learning lab; Ver.1.4 — return to simple flower visuals */
+/* Ver.1.3 — learning lab; Ver.1.5 — return to simple flower visuals */
 .flower-canvas{border-radius:4px;background:#f8faf7}
 .learning-panel{border-left:3px solid #648d76}
 .lab-eyebrow{font-size:10px;letter-spacing:.14em;color:#668e72;font-weight:750}
@@ -119,7 +122,7 @@
 .compare-foot{padding-top:9px;margin-top:9px;border-top:1px solid #e5ede4;font-size:11px;color:#667d6c;line-height:1.7}
 @media(max-width:610px){.compare-scenes{gap:7px}.compare-scene{padding:8px}.compare-flower{height:130px}.compare-metric{font-size:20px}.compare-toolbar .btn{font-size:11px;flex:1 1 85px;padding-inline:8px}.lab-controls .btn{flex:1 1 105px}.prediction-btn{font-size:12px}}
 
-/* Ver.1.4: textbook-to-experiment journey and crawlable glossary */
+/* Ver.1.5: textbook-to-experiment journey and crawlable glossary */
 .study-finder{margin:0 0 20px;padding:16px 19px;background:#fff;border:1px solid var(--line)}
 .finder-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .finder-head h2{font-size:14px;margin:0;color:#214d38}
@@ -149,13 +152,27 @@
 .topic-readmore a{font-weight:700;color:#206c50;text-underline-offset:3px}
 @media(max-width:690px){.study-finder{padding:13px;margin-bottom:15px}.finder-results-list,.learn-grid{grid-template-columns:1fr}.finder-head{display:block}.finder-head p{margin-top:3px}.finder-form button{padding:0 10px}.learn-index{padding:15px}}
 
+
+/* Ver.1.5: search-friendly, readable questions without changing the simulation controls */
+.seo-learning{margin:18px 0 0;border:1px solid var(--line);background:white;padding:22px 23px}
+.seo-label{margin:0 0 5px;font-size:10px;letter-spacing:.12em;color:#648d73;font-weight:750}
+.seo-learning h2{font-size:17px;letter-spacing:-.02em;margin:0 0 5px;color:#244a37}
+.seo-intro{font-size:12px;color:#5c7464;margin:0 0 13px;line-height:1.85}
+.seo-qa-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.seo-qa-grid a{display:flex;flex-direction:column;gap:5px;text-decoration:none;background:#fafcf9;border:1px solid #e2e9e1;padding:12px 13px;line-height:1.7}
+.seo-qa-grid a:hover,.seo-qa-grid a:focus-visible{border-color:#86b795;background:#f1f7f0}
+.seo-qa-grid strong{font-size:13px;color:#254c39}
+.seo-qa-grid span{font-size:11px;color:#62796a}
+.seo-qa-grid em{font-size:11px;color:#266e50;font-style:normal;font-weight:700;margin-top:3px}
+.seo-foot{margin:11px 0 0;color:#768675;font-size:10px}
+@media(max-width:690px){.seo-learning{padding:14px}.seo-qa-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="error" id="error" hidden role="alert"></div><noscript><div class="noscript">JavaScriptを有効にしてSafariまたはChromeから開いてください。</div></noscript>
 <div class="layout">
-<aside class="sidebar" aria-label="実験テーマ"><div class="logo"><span class="logo-dot"></span>GENE LAB</div><div class="slogan">EVOLUTION, EXPLORED.</div><div id="desktop-nav"></div><div class="side-foot">VERSION 1.4.1<br>進化と遺伝のしくみを、動かして学ぶ<br>シミュレーションはブラウザ上で実行</div></aside>
-<div class="workspace"><header class="top"><div class="crumb">GENE LAB / <b id="breadcrumb">ハーディ・ワインベルグ平衡</b></div><span class="version">RELEASE 1.4.1</span></header><nav class="mobile-nav" id="mobile-nav" aria-label="実験テーマ"></nav>
+<aside class="sidebar" aria-label="実験テーマ"><div class="logo"><span class="logo-dot"></span>いでんのたね</div><div class="slogan">高校生物・進化と遺伝の実験室</div><div id="desktop-nav"></div><div class="side-foot">VERSION 1.5<br>進化と遺伝のしくみを、動かして学ぶ<br>シミュレーションはブラウザ上で実行</div></aside>
+<div class="workspace"><header class="top"><div class="crumb">いでんのたね / <b id="breadcrumb">ハーディ・ワインベルグ平衡</b></div><span class="version">RELEASE 1.5</span></header><nav class="mobile-nav" id="mobile-nav" aria-label="実験テーマ"></nav>
 <main class="main"><section class="lead"><div><div id="eyebrow" class="eyebrow"></div><h1 id="topic-title">ハーディ・ワインベルグ平衡を実験で理解する</h1><p id="topic-description">遺伝子頻度と遺伝子型頻度の違いを、花畑・グラフ・理論式で確認できます。</p></div><div class="index" id="topic-index"></div></section>
 
 <section class="study-finder" aria-labelledby="finder-title">
@@ -203,8 +220,21 @@
 </section>
 <section class="panel pad explanation"><div class="panel-head"><h2>理論と解説</h2><span class="micro">THEORY</span></div><div class="theory" id="theory"></div><div class="limit" id="limitations"></div><div class="topic-readmore"><a id="topic-learn-link" href="/learn/hw/">このテーマを最初から解説で学ぶ →</a></div></section>
 <section class="panel pad genopanel" id="genotype-panel"><div class="panel-head"><h2>遺伝子型：実測と平衡期待値</h2><span class="micro">GENOTYPES</span></div><table class="genotable"><thead><tr><th>遺伝子型</th><th>実測</th><th>期待</th></tr></thead><tbody><tr><td>AA</td><td id="g-AA"></td><td id="exp-AA"></td></tr><tr><td>Aa</td><td id="g-Aa"></td><td id="exp-Aa"></td></tr><tr><td>aa</td><td id="g-aa"></td><td id="exp-aa"></td></tr></tbody></table><div class="small">期待値は現在の p に対する p²、2pq、q²。有限個体の実測値には偶然のずれがあります。</div><div class="genobar" id="genotype-bars" aria-hidden="true"><span id="geno-bar-AA" style="background:#39869c"></span><span id="geno-bar-Aa" style="background:#a287b1"></span><span id="geno-bar-aa" style="background:#cb995b"></span></div><div class="small" id="genotype-bar-caption">棒の色：AA / Aa / aa の実測割合</div></section>
-</div></div><section class="learn-index" aria-labelledby="learn-title"><h2 id="learn-title">進化・遺伝の12テーマを解説から学ぶ</h2><p>高校生が「なぜ？」を解決できるよう、しくみ・例・実験の手順をまとめました。各解説からすぐにシミュレーションを動かせます。</p><div class="learn-grid"><a href="/learn/hw/"><span>01 / やさしく学ぶ</span>ハーディ・ワインベルグ平衡の解説</a><a href="/learn/drift/"><span>02 / やさしく学ぶ</span>遺伝的浮動の解説</a><a href="/learn/bottle/"><span>03 / やさしく学ぶ</span>ボトルネック効果の解説</a><a href="/learn/neutral/"><span>04 / やさしく学ぶ</span>中立進化の解説</a><a href="/learn/founder/"><span>05 / やさしく学ぶ</span>創始者効果の解説</a><a href="/learn/flow/"><span>06 / やさしく学ぶ</span>遺伝子流動の解説</a><a href="/learn/selection/"><span>07 / やさしく学ぶ</span>自然選択の解説</a><a href="/learn/mutation/"><span>08 / やさしく学ぶ</span>突然変異の解説</a><a href="/learn/recomb/"><span>09 / やさしく学ぶ</span>遺伝的組換えの解説</a><a href="/learn/patterns/"><span>10 / やさしく学ぶ</span>自然選択の3つの型の解説</a><a href="/learn/inbreed/"><span>11 / やさしく学ぶ</span>近親交配・自家受粉の解説</a><a href="/learn/speciation/"><span>12 / やさしく学ぶ</span>集団の分化と種分化の解説</a></div></section><p class="footer">このアプリは教育用の確率モデルです。実際の生物の全遺伝情報・環境・行動は再現していません。世代は離散的、集団は有限で、原則として二倍体です。色の違いが常に生存能力の違いを表すわけではありません。</p>
+</div></div><section class="learn-index" aria-labelledby="learn-title"><h2 id="learn-title">高校生物の「なぜ？」を解決する12の学習テーマ</h2><p>高校生が「なぜ？」を解決できるよう、しくみ・例・実験の手順をまとめました。各解説からすぐにシミュレーションを動かせます。 <a href="/learn/" style="color:#246b51;font-weight:700">学習ガイド：どこから学べばいい？</a></p><div class="learn-grid"><a href="/learn/hw/"><span>01 / やさしく学ぶ</span>ハーディ・ワインベルグ平衡の解説</a><a href="/learn/drift/"><span>02 / やさしく学ぶ</span>遺伝的浮動の解説</a><a href="/learn/bottle/"><span>03 / やさしく学ぶ</span>ボトルネック効果の解説</a><a href="/learn/neutral/"><span>04 / やさしく学ぶ</span>中立進化の解説</a><a href="/learn/founder/"><span>05 / やさしく学ぶ</span>創始者効果の解説</a><a href="/learn/flow/"><span>06 / やさしく学ぶ</span>遺伝子流動の解説</a><a href="/learn/selection/"><span>07 / やさしく学ぶ</span>自然選択の解説</a><a href="/learn/mutation/"><span>08 / やさしく学ぶ</span>突然変異の解説</a><a href="/learn/recomb/"><span>09 / やさしく学ぶ</span>遺伝的組換えの解説</a><a href="/learn/patterns/"><span>10 / やさしく学ぶ</span>自然選択の3つの型の解説</a><a href="/learn/inbreed/"><span>11 / やさしく学ぶ</span>近親交配・自家受粉の解説</a><a href="/learn/speciation/"><span>12 / やさしく学ぶ</span>集団の分化と種分化の解説</a></div></section><p class="footer">このアプリは教育用の確率モデルです。実際の生物の全遺伝情報・環境・行動は再現していません。世代は離散的、集団は有限で、原則として二倍体です。色の違いが常に生存能力の違いを表すわけではありません。</p>
 <details class="references"><summary>学習の参考資料</summary><div class="reference-body">進化・集団遺伝学をさらに学びたい方へ。外部サイト（英語）を開きます。<ul><li><a href="https://evolution.berkeley.edu/evolution-101/" target="_blank" rel="noopener noreferrer">Understanding Evolution — University of California, Berkeley</a>（進化の基礎）</li><li><a href="https://openstax.org/details/books/biology-2e" target="_blank" rel="noopener noreferrer">Biology 2e — OpenStax</a>（大学初年次向け生物学教科書）</li></ul>※本アプリは上記機関による監修・認定を受けたものではありません。</div></details>
+
+<section class="seo-learning" aria-labelledby="seo-learning-title">
+  <p class="seo-label">まず疑問から学ぼう</p>
+  <h2 id="seo-learning-title">進化と遺伝、どこがわからない？</h2>
+  <p class="seo-intro">高校「生物」の集団遺伝学を、短い答えから読み始めて、そのまま条件を変えて実験できます。すべて無料・登録不要です。</p>
+  <div class="seo-qa-grid">
+    <a href="/learn/hw/"><strong>ハーディ・ワインベルグの法則の5条件は？</strong><span>無作為交配、自然選択なし、突然変異なし、遺伝子流動なし、十分に大きい集団。p²・2pq・q²も計算して確かめる。</span><em>条件と計算例を学ぶ →</em></a>
+    <a href="/learn/drift/"><strong>遺伝的浮動はなぜ小さな集団で強い？</strong><span>偶然のばらつきが相対的に大きいから。20個体と1000個体を比べ、理論値と実験結果を観察する。</span><em>比較実験を開く →</em></a>
+    <a href="/learn/bottle/"><strong>ボトルネック効果で遺伝的多様性は戻る？</strong><span>個体数が回復しても、失われた対立遺伝子は自動では戻らない。災害を何度も起こして確かめる。</span><em>花畑を使って試す →</em></a>
+    <a href="/learn/selection/"><strong>自然選択と遺伝的浮動の違いは？</strong><span>適応度の差による方向性のある変化と、偶然による変化。どちらも進化に関わる。</span><em>自然選択を学ぶ →</em></a>
+  </div>
+  <p class="seo-foot">教材の数理モデルは学習用に単純化しています。各テーマで前提条件と限界も説明しています。</p>
+</section>
 </main></div></div>
 <script>
 'use strict';
@@ -519,7 +549,7 @@ function downloadText(content,name,type='text/plain;charset=utf-8'){
  const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
 function saveGuide(){const gd=GUIDES[topic],at=metrics(pop1),base=history[0],pp=x=>(x*100).toFixed(2)+'%';
- const text=[`# GENE LAB Ver.1.4 実験ノート`,``,`- 日時：${new Date().toLocaleString('ja-JP')}` ,`- テーマ：${info[topic][1]}`,`- 世代：${gen}`,`- 乱数シード：${seedValue}`,`- 条件：${JSON.stringify(params)}`,``,`## 問い`,gd.question,``,`## 予想`,guideChoice===null?'未選択':gd.choices[guideChoice],``,`## 観察`,guideEvidence(),`初期A頻度：${pp(base.p1)}`,`最終A頻度：${pp(at.p)}`,``,`## 考察`,gd.explain,``,`## モデルの前提と限界`,info[topic][6],``,`※結果の時系列データは別途「結果をCSV保存」で取得できます。`].join('\n');
+ const text=[`# いでんのたね Ver.1.5 実験ノート`,``,`- 日時：${new Date().toLocaleString('ja-JP')}` ,`- テーマ：${info[topic][1]}`,`- 世代：${gen}`,`- 乱数シード：${seedValue}`,`- 条件：${JSON.stringify(params)}`,``,`## 問い`,gd.question,``,`## 予想`,guideChoice===null?'未選択':gd.choices[guideChoice],``,`## 観察`,guideEvidence(),`初期A頻度：${pp(base.p1)}`,`最終A頻度：${pp(at.p)}`,``,`## 考察`,gd.explain,``,`## モデルの前提と限界`,info[topic][6],``,`※結果の時系列データは別途「結果をCSV保存」で取得できます。`].join('\n');
  downloadText(text,`gene-lab-v1.4_experiment_${topic}_${seedValue}.md`,'text/markdown;charset=utf-8');
 }
 function select(t){if(!info[t])return;if(['http:','https:'].includes(location.protocol)){const u=new URL(location.href);if(u.searchParams.get('topic')!==t){u.searchParams.set('topic',t);window.history.replaceState(null,'',u.pathname+u.search+u.hash);}}pause();if(busy)cancelRepeat();topic=t;const d=info[t],idx=INFO.findIndex(x=>x[0]===t)+1;
