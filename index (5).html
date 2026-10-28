@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#19392f">
+<title>ハーディ・ワインベルグの法則｜5つの条件と計算例・無料シミュレーター｜いでんのたね</title>
+<meta name="description" content="ハーディ・ワインベルグの法則の5条件、p²・2pq・q²の意味と計算を高校生物向けに解説。赤・ピンク・白の花を使った無料シミュレーションで確かめよう。">
+<meta name="robots" content="index,follow"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://gene-lab-8z6.pages.dev/learn/hw/"><meta property="og:type" content="article"><meta property="og:site_name" content="いでんのたね"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="ハーディ・ワインベルグの法則｜5つの条件と計算例・無料シミュレーター｜いでんのたね"><meta property="og:description" content="ハーディ・ワインベルグの法則の5条件、p²・2pq・q²の意味と計算を高校生物向けに解説。赤・ピンク・白の花を使った無料シミュレーションで確かめよう。"><meta property="og:url" content="https://gene-lab-8z6.pages.dev/learn/hw/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"ハーディ・ワインベルグの法則とは？5つの条件は？","inLanguage":"ja","url":"https://gene-lab-8z6.pages.dev/learn/hw/","description":"遺伝子頻度が変わらない理想的な集団を基準に、遺伝子型の割合を p²・2pq・q² で考える法則です。","learningResourceType":"説明記事・シミュレーション実験","educationalLevel":"高校","isAccessibleForFree":true,"provider":{"@type":"Organization","name":"いでんのたね","url":"https://gene-lab-8z6.pages.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"いでんのたね","item":"https://gene-lab-8z6.pages.dev/"},{"@type":"ListItem","position":2,"name":"ハーディ・ワインベルグ平衡","item":"https://gene-lab-8z6.pages.dev/learn/hw/"}]}]}</script>
+<style>
+:root{--bg:#f5f6f2;--text:#203c2d;--muted:#657d6b;--line:#dce6db;--accent:#196949;--deep:#19392f}
+*{box-sizing:border-box}html{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-size:15px;line-height:1.95}
+a{color:var(--accent);text-underline-offset:3px}a:focus-visible{outline:3px solid #91bb9f;outline-offset:3px}
+header{background:var(--deep);color:#f6fcf7;padding:16px 24px}.header-inner{max-width:1020px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{color:white;text-decoration:none;font-size:21px;font-weight:800;letter-spacing:-.06em}.brand span{color:#b6d8c6;font-size:12px;letter-spacing:0;margin-left:9px;font-weight:500}.header-link{color:#e2f4e7;text-decoration:none;font-size:12px;border:1px solid #608670;padding:9px 13px;white-space:nowrap}
+main{max-width:1020px;margin:auto;padding:28px 20px 80px}.breadcrumbs{font-size:12px;color:var(--muted);margin-bottom:18px}.breadcrumbs a{font-weight:600}.intro{margin-bottom:25px}.label{font-size:11px;color:#277353;font-weight:800;letter-spacing:.12em}.intro h1{font-size:clamp(28px,5vw,39px);letter-spacing:-.04em;line-height:1.4;margin:7px 0 12px}.lead{font-size:16px;color:#4f6657;line-height:1.9;max-width:780px}
+.page-layout{display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:20px;align-items:start}article{min-width:0}.card{background:white;border:1px solid var(--line);padding:25px 27px;margin-bottom:15px}.card h2{font-size:20px;line-height:1.5;margin:0 0 15px;letter-spacing:-.02em}.card h3{font-size:15px;margin:24px 0 4px}.card p{margin:0 0 13px}.card p:last-child{margin-bottom:0}.step{padding-left:23px;margin:5px 0}.step li{margin:9px 0}.aside{position:sticky;top:18px}.aside .card{padding:18px}.aside h2{font-size:14px;margin:0 0 10px}.aside a{display:block;font-size:12px;padding:7px 0;border-bottom:1px solid #edf0ed;text-decoration:none}.aside a:last-child{border:0}.button-link{display:block;background:var(--accent);color:white!important;text-align:center;text-decoration:none;border-radius:4px;font-weight:700;padding:13px 12px;line-height:1.5;margin-bottom:10px;min-height:48px}.button-link:hover{background:#0e4f37}.box-highlight{border-left:3px solid #6da183;background:#f3f7f1;padding:16px 18px;margin:10px 0 17px;font-weight:600;line-height:1.85}.caution{font-size:13px;border-top:1px solid var(--line);padding-top:15px;color:#66796b}.question{font-weight:750;color:#2f5641}.related{display:flex;gap:9px;flex-wrap:wrap}.related a{border:1px solid var(--line);background:#f9fbf8;text-decoration:none;font-size:12px;padding:9px 13px}.top-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 0}.top-cta .button-link{display:inline-block;min-width:235px;margin:0}footer{border-top:1px solid var(--line);color:#738776;padding-top:15px;margin-top:20px;font-size:12px}.toc-mobile{display:none}
+@media(max-width:800px){.page-layout{grid-template-columns:1fr}.aside{position:static;display:none}.toc-mobile{display:block;background:white;border:1px solid var(--line);padding:11px 14px;margin-bottom:16px}.toc-mobile summary{font-size:13px;font-weight:700;cursor:pointer}.toc-mobile a{display:block;font-size:12px;padding:4px}.card{padding:20px 17px}header{padding:12px 16px}.header-inner{gap:7px}.brand{font-size:19px}.brand span{display:none}main{padding:20px 12px 50px}.header-link{font-size:11px;padding:7px 8px}.intro h1{font-size:27px}}
+
+/* Learning quality and search-landing clarity, version 1.5 */
+.quick-answer{margin:16px 0 0;background:#edf6ed;border-left:3px solid #54886b;padding:12px 14px;color:#30543e;font-size:13px;line-height:1.8}
+.quick-answer strong{display:block;margin-bottom:4px;font-size:12px}
+.quick-topic{background:#fffdf8;border-left:3px solid #b9a36f;padding:13px 14px;margin:12px 0 18px}
+.quick-topic h2{font-size:16px;margin:0 0 6px;color:#36513c}
+.quick-topic p{font-size:13px;line-height:1.9;margin:0 0 8px}
+.quick-topic p:last-child{margin-bottom:0}
+.practice{border:1px solid #dce8df;background:#f9fbf8;padding:15px;margin-top:18px}
+.practice h3{margin:0 0 6px;font-size:15px;color:#2a6347}
+.practice p{font-size:12px;color:#657968;margin:0 0 12px}
+.practice label{font-size:12px;font-weight:700;display:block;margin-bottom:7px}
+.practice input[type=range]{width:100%;max-width:470px;accent-color:#217152;cursor:pointer}
+.practice-result{margin-top:12px;font-size:13px;font-weight:650;color:#244e39;line-height:1.7}
+.practice-bars{display:grid;gap:7px;margin-top:12px}
+.practice-bar{display:grid;grid-template-columns:75px minmax(0,1fr) 45px;align-items:center;gap:8px;font-size:11px}
+.practice-bar-track{height:12px;background:#e5ebe4;overflow:hidden;border-radius:2px}
+.practice-bar-fill{height:100%;transition:width .1s}
+.practice-small{margin-top:8px!important;font-size:11px!important}
+@media(max-width:600px){.quick-answer,.quick-topic{padding:11px}.practice{padding:11px}.practice-bar{grid-template-columns:62px minmax(0,1fr) 41px}}
+</style></head><body>
+<header><div class="header-inner"><a class="brand" href="/">いでんのたね <span>進化と遺伝のしくみを、動かして学ぶ</span></a><a class="header-link" href="/?topic=hw#experiment">シミュレーターを開く</a></div></header>
+<main><nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/">いでんのたね ホーム</a>　/　<a href="/learn/">学習ガイド</a>　/　ハーディ・ワインベルグ平衡</nav>
+<div class="intro"><div class="label">BIOLOGY / HIGH SCHOOL</div><h1>ハーディ・ワインベルグの法則とは？5つの条件は？</h1><p class="lead">遺伝子頻度が変わらない理想的な集団を基準に、遺伝子型の割合を p²・2pq・q² で考える法則です。</p><div class="quick-answer"><strong>まず答え</strong>q=1−p=0.4。AAはp²=36%、Aaは2pq=48%、aaはq²=16%です。これは無作為に配偶子が結びつくときの期待値で、有限集団での観察値は多少ずれます。</div><div class="top-cta"><a class="button-link" href="/?topic=hw#experiment">この現象を実際に動かしてみる</a><span style="font-size:12px;color:#67806c">無料・登録不要・スマホ対応</span></div></div>
+<details class="toc-mobile"><summary>この記事の内容</summary><a href="#meaning">まず理解する</a><a href="#point">まず疑問を解決</a><a href="#mechanism">しくみと例</a><a href="#try">実際に動かす</a><a href="#faq">よくある疑問</a></details>
+<div class="page-layout"><article>
+<section class="card" id="meaning"><h2>ハーディ・ワインベルグ平衡とは？</h2><div class="box-highlight">遺伝子頻度が変わらない理想的な集団を基準に、遺伝子型の割合を p²・2pq・q² で考える法則です。</div><p>Aとaという2種類の対立遺伝子があり、Aの頻度をp、aの頻度をqとするとp+q=1です。ランダムな配偶子の結合を仮定すると、次世代の遺伝子型AA、Aa、aaの期待頻度はそれぞれp²、2pq、q²になります。</p><p>この関係は、対立遺伝子頻度と遺伝子型頻度を区別するための基準です。「全員が同じ遺伝子型になる」という意味ではありません。</p></section>
+<section class="card" id="point"><div class="quick-topic"><h2>p=0.6なら、AA・Aa・aaの割合はどうなる？</h2><p>q=1−p=0.4。AAはp²=36%、Aaは2pq=48%、aaはq²=16%です。これは無作為に配偶子が結びつくときの期待値で、有限集団での観察値は多少ずれます。</p><p><strong>重要：</strong>ハーディ・ワインベルグ平衡は「遺伝子型の比率がずっと変わらない」だけでなく、無作為交配でp²:2pq:q²になり、理想条件下で対立遺伝子頻度が維持されるという基準です。</p></div><h3>次に試してみること</h3><p>まずp=0.6を設定し、花畑を表示。AA・Aa・aaの理論値と観察値を比較してから、20個体と大集団に変更しましょう。</p></section>
+<section class="card" id="mechanism"><h2>しくみと具体例</h2><p>平衡を保つ代表的な5条件は、①無作為交配、②自然選択がない、③突然変異がない、④遺伝子流動がない、⑤十分に大きい集団、です。最後の条件は、遺伝的浮動の影響を無視できるほど大きいという理想化です。</p><p>例えばp=0.6、q=0.4なら、AAは0.36、Aaは0.48、aaは0.16が期待値です。花色が不完全優性ならRRを赤、Rrをピンク、rrを白として花畑で見ることができます。</p><p>実際の有限集団では、世代ごとに親から受け取る遺伝子の組み合わせに偶然のばらつきがあるため、観察値は理論値と完全には一致しません。</p></section>
+<section class="card" aria-label="計算して確かめる">
+<div class="practice" id="hw-calc">
+ <h3>実際に計算：pを変えて花色の割合を予想する</h3>
+ <p>この例では、1遺伝子座の不完全優性を仮定して、AA=赤、Aa=ピンク、aa=白とします。</p>
+ <label for="hw-p">Aの対立遺伝子頻度 p：<output id="hw-p-value">0.60</output></label>
+ <input type="range" id="hw-p" min="0" max="1" step="0.05" value="0.6" aria-describedby="hw-result">
+ <div id="hw-result" class="practice-result" aria-live="polite">p=0.60、q=0.40、p+q=1</div>
+ <div class="practice-bars">
+   <div class="practice-bar"><span>AA（赤）</span><div class="practice-bar-track"><div class="practice-bar-fill" id="hw-aa" style="background:#ba5463;width:36%"></div></div><output id="hw-aa-n">36%</output></div>
+   <div class="practice-bar"><span>Aa（桃）</span><div class="practice-bar-track"><div class="practice-bar-fill" id="hw-het" style="background:#e8a2b3;width:48%"></div></div><output id="hw-het-n">48%</output></div>
+   <div class="practice-bar"><span>aa（白）</span><div class="practice-bar-track"><div class="practice-bar-fill" id="hw-small" style="background:#c4c8bc;width:16%"></div></div><output id="hw-small-n">16%</output></div>
+ </div>
+ <p class="practice-small">計算は理論上の期待値です。実際の花畑では個体数が有限なので、割合が一致しないことがあります。</p>
+ <a class="cta" href="/?topic=hw#experiment">この条件をシミュレーションで実験する</a>
+</div>
+<script>
+(()=>{const el=document.getElementById('hw-p');if(!el)return;const set=(id,v)=>{document.getElementById(id).textContent=v+'%'};
+const draw=()=>{const p=Number(el.value),q=1-p,a=p*p*100,b=2*p*q*100,c=q*q*100;document.getElementById('hw-p-value').textContent=p.toFixed(2);document.getElementById('hw-result').textContent='p='+p.toFixed(2)+'、q='+q.toFixed(2)+' ／ p²='+a.toFixed(1)+'%、2pq='+b.toFixed(1)+'%、q²='+c.toFixed(1)+'%';[['hw-aa',a,'hw-aa-n'],['hw-het',b,'hw-het-n'],['hw-small',c,'hw-small-n']].forEach(([id,n,out])=>{document.getElementById(id).style.width=n+'%';document.getElementById(out).textContent=n.toFixed(1)+'%';});};el.addEventListener('input',draw);draw();})();
+</script>
+</section>
+<section class="card" id="try"><h2>シミュレーションで確かめる</h2><p>読むだけでわかりにくいときは、条件を変えて観察しましょう。次の順番で試すと違いが見えやすくなります。</p><ol class="step"><li>まずA頻度を50%にして、「花畑」表示に切り替える。</li><li>＋1世代を押し、AA・Aa・aaの実測割合と理論値を比較する。</li><li>集団サイズを20と500に変え、＋50世代で遺伝的浮動の違いを確かめる。</li></ol><a class="button-link" href="/?topic=hw#experiment">いでんのたねで「ハーディ・ワインベルグ平衡」を実験する</a><p style="font-size:12px;color:#708474">実験を開いたら「＋1」「＋10」「＋50」で世代を進められます。花畑表示に対応するテーマでは表示も切り替えられます。</p><p class="caution"><strong>モデルの注意点：</strong>理想的な無限大集団の予測と、有限集団の確率シミュレーションは一致しない場合があります。また花色は1遺伝子座の不完全優性を仮定した学習用例です。</p></section>
+<section class="card" id="faq"><h2>よくある疑問</h2><h3 class="question">遺伝子頻度と遺伝子型頻度は何が違う？</h3><p>遺伝子頻度は対立遺伝子Aやaのコピーの割合、遺伝子型頻度は個体のAA、Aa、aaの割合です。二倍体ならAの頻度は（2×AA個体数＋Aa個体数）÷（2×総個体数）です。</p><h3 class="question">5条件が1つでも破れると必ずAの頻度が変わる？</h3><p>必ずしもそうではありません。例えば自家受粉は遺伝子型頻度を変えてヘテロ接合体を減らし得ますが、単独では対立遺伝子頻度を必ず変えるわけではありません。</p></section>
+<section class="card" id="related"><h2>関連するテーマ</h2><div class="related"><a href="/learn/drift/">遺伝的浮動を学ぶ</a><a href="/learn/founder/">創始者効果を学ぶ</a></div><p style="font-size:12px;color:#6d816f;margin-top:15px">ハーディ・ワインベルグ平衡を理解したら、関連する進化の仕組みを比較してみましょう。</p></section>
+</article><aside class="aside"><div class="card"><h2>この記事の内容</h2><a href="#meaning">まず理解する</a><a href="#point">まず疑問を解決</a><a href="#mechanism">しくみと例</a><a href="#try">実際に動かす</a><a href="#faq">よくある疑問</a><a href="#related">関連するテーマ</a></div><div class="card"><h2>読むだけで終わらせない</h2><p style="font-size:12px;color:#637967;margin:0 0 12px">実験はブラウザの中で動きます。条件を変えて確かめられます。</p><a class="button-link" href="/?topic=hw#experiment">今すぐ実験する</a></div></aside></div>
+<footer>いでんのたね — 高校生の進化・遺伝学習サイト。説明・数式は学習用の単純化を含みます。<a href="/">全12テーマに戻る</a> ／ <a href="https://evolution.berkeley.edu/evolution-101/" rel="noopener noreferrer">学習参考資料（UC Berkeley）</a></footer>
+</main></body></html>
